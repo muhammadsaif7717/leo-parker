@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { BsSunFill } from "react-icons/bs";
-import { FaMoon } from "react-icons/fa";
-import { Button } from "../ui/button";
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { FaMoon } from 'react-icons/fa';
+import { Button } from '../ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
+import { IoSunnySharp } from 'react-icons/io5';
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -22,28 +22,47 @@ export default function ThemeSwitcher() {
 
   if (!mounted) return null;
 
-
   return (
     <div>
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <Button variant="ghost">
-            {theme === "dark" ? (
-              <BsSunFill className="text-yellow-400" size={18} />
+        <DropdownMenuTrigger asChild>
+          <Button variant='' className={`bg-red-300 text-4xl`}>
+            {' '}
+            {/*Edite here*/}
+            {theme === 'dark' ? (
+              <IoSunnySharp size={20} />
             ) : (
-              <FaMoon className="text-gray-800 dark:text-white" size={15} />
+              <FaMoon className='text-gray-800 dark:text-white' size={15} />
             )}
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className={`w-auto`}>
           <DropdownMenuItem>
-            <Button variant="ghost" className={`w-full`} onClick={() => setTheme("light")}>Light</Button>
+            <Button
+              variant='ghost'
+              className={`w-full justify-start`}
+              onClick={() => setTheme('light')}
+            >
+              Light
+            </Button>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Button variant="ghost" className={`w-full`} onClick={() => setTheme("dark")}>Dark</Button>
+            <Button
+              variant='ghost'
+              className={`w-full justify-start`}
+              onClick={() => setTheme('dark')}
+            >
+              Dark
+            </Button>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Button variant="ghost" className={`w-full`} onClick={() => setTheme("system")}>System</Button>
+            <Button
+              variant='ghost'
+              className={`w-full justify-start`}
+              onClick={() => setTheme('system')}
+            >
+              System
+            </Button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
